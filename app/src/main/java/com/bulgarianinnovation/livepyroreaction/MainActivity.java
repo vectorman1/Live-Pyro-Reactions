@@ -56,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_rate:
-                return true;
         }
         return super.onOptionsItemSelected(item);
     }
