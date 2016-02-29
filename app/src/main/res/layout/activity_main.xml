@@ -18,5 +18,27 @@
         android:clickable="true"
         android:layout_centerVertical="true"
         android:background="?attr/selectableItemBackgroundBorderless" />
-
+    <TextView
+        android:id="@+id/text_quote"
+        android:layout_below="@id/main_button"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="16dp"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textColor="#000"
+        android:text=""/>
+    <TextView
+        android:id="@+id/credit"
+        android:layout_below="@id/text_quote"
+        android:textAlignment="textEnd"
+        android:gravity="end"
+        android:visibility="invisible"
+        android:layout_marginRight="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- Pyrocynical"/>
 </RelativeLayout>
