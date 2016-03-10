@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+<<<<<<< HEAD
     <item
         android:id="@+id/action_rate"
         android:icon="@drawable/ic_grade_24dp"
         android:title="@string/rate"
         app:showAsAction="always" />
+=======
+
+>>>>>>> e5b79fefa58a6d355507ab703eed4ce298b8d1a9
 </menu>

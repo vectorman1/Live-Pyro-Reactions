@@ -21,7 +21,11 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+<<<<<<< HEAD
         android:textSize="16sp"
+=======
+        android:textSize="16dp"
+>>>>>>> e5b79fefa58a6d355507ab703eed4ce298b8d1a9
         android:textAlignment="center"
         android:textStyle="italic"
         android:layout_width="match_parent"
@@ -38,5 +42,9 @@
         android:layout_marginRight="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:text="@string/quotename"/>
+=======
+        android:text="- Pyrocynical"/>
+>>>>>>> e5b79fefa58a6d355507ab703eed4ce298b8d1a9
 </RelativeLayout>

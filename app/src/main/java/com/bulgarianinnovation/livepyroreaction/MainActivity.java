@@ -74,7 +74,11 @@ public class MainActivity extends AppCompatActivity {
             "Give me a small loan of a million dollars.", //34
             "No fun allowed.", //35 --
             "Let people do what they want and if everyone is enjoying themselves then everyone is better off.", //36
+<<<<<<< HEAD
             "You need to sit down with a big piece of paper, titled \"Your Life\" and just rethink it all, mate.", //37
+=======
+            "You need to sit down with a big piece of paper, titled \"My Life\" and just rethink it all, mate.", //37
+>>>>>>> e5b79fefa58a6d355507ab703eed4ce298b8d1a9
             "It has reached the point where it hurts to wake up at the morning", //38
             "I am actually really terrified.", //39
             "There it is! There it is! ANOTHER ONE! ANOTHER ONE!", //40
@@ -103,6 +107,10 @@ public class MainActivity extends AppCompatActivity {
         tv.setTypeface(tfc);
 
         button.setOnClickListener(new View.OnClickListener() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> e5b79fefa58a6d355507ab703eed4ce298b8d1a9
             @Override
             public void onClick(View v) {
                 credit.setVisibility(View.VISIBLE);
@@ -112,7 +120,10 @@ public class MainActivity extends AppCompatActivity {
                     firstPlay = false;
                 } else {
                     mp.stop();
+<<<<<<< HEAD
                     mp.release();
+=======
+>>>>>>> e5b79fefa58a6d355507ab703eed4ce298b8d1a9
                     mp = MediaPlayer.create(getApplicationContext(), rawRef[r]);
                 }
                 tv.setText(String.format("\"%s\"", quoteText[r]));
@@ -122,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+<<<<<<< HEAD
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
@@ -134,6 +146,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_rate:
 
                 break;
+=======
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+>>>>>>> e5b79fefa58a6d355507ab703eed4ce298b8d1a9
         }
         return super.onOptionsItemSelected(item);
     }

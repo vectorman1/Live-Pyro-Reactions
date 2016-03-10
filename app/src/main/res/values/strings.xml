@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Live Pyro Reaction</string>
+<<<<<<< HEAD
     <string name="quotename">- Pyrocynical</string>
     <string name="rate">Rate on PlayStore</string>
+=======
+>>>>>>> e5b79fefa58a6d355507ab703eed4ce298b8d1a9
 </resources>

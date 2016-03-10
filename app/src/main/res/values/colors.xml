@@ -3,6 +3,9 @@
     <color name="colorPrimary">#FF00FF</color>
     <color name="colorPrimaryDark">#d500f9</color>
     <color name="colorAccent">#FF4081</color>
+<<<<<<< HEAD
     <color name="yellow">#ffea00</color>
     <color name="white">#FFF</color>
+=======
+>>>>>>> e5b79fefa58a6d355507ab703eed4ce298b8d1a9
 </resources>
