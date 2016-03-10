@@ -24,13 +24,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-<<<<<<< HEAD
         android:textSize="16sp"
         android:gravity="center"
-=======
-        android:textSize="16dp"
-        android:textAlignment="center"
->>>>>>> e5b79fefa58a6d355507ab703eed4ce298b8d1a9
         android:textStyle="italic"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -39,14 +34,10 @@
     <TextView
         android:id="@+id/credit"
         android:layout_below="@id/text_quote"
-<<<<<<< HEAD
-=======
-        android:textAlignment="textEnd"
->>>>>>> e5b79fefa58a6d355507ab703eed4ce298b8d1a9
         android:gravity="end"
         android:visibility="invisible"
         android:layout_marginRight="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="- Pyrocynical"/>
+        android:text="@string/quotename"/>
 </RelativeLayout>
