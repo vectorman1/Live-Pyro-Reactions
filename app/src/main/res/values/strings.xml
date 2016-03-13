@@ -2,4 +2,7 @@
     <string name="app_name">Live Pyro Reaction</string>
     <string name="quotename">- Pyrocynical</string>
     <string name="rate">Rate on PlayStore</string>
+    <string name="action_settings">More</string>
+    <string name="action_replay">Replay quote</string>
+    <string name="action_share">Share quote</string>
 </resources>

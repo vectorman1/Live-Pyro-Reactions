@@ -1,9 +1,15 @@
 package com.bulgarianinnovation.livepyroreaction;
 
+import android.content.ActivityNotFoundException;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
+import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +20,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -25,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     boolean firstPlay = true;
     private ImageView button;
     private MediaPlayer mp;
-    private SoundPool sp;
     private TextView tv;
     private TextView credit;
     private int[] rawRef = { R.raw.quote1, R.raw.quote2, R.raw.quote3, R.raw.quote4, R.raw.quote5, R.raw.quote6,
@@ -35,7 +41,11 @@ public class MainActivity extends AppCompatActivity {
                              R.raw.quote25, R.raw.quote26, R.raw.quote27, R.raw.quote28, R.raw.quote29, R.raw.quote30,
                              R.raw.quote31, R.raw.quote32, R.raw.quote33, R.raw.quote34, R.raw.quote35, R.raw.quote36,
                              R.raw.quote37, R.raw.quote38, R.raw.quote39, R.raw.quote40, R.raw.quote41, R.raw.quote42,
-                             R.raw.quote43, R.raw.quote44, R.raw.quote45 };
+                             R.raw.quote43, R.raw.quote44, R.raw.quote45, R.raw.quote46, R.raw.quote47, R.raw.quote48,
+                             R.raw.quote49, R.raw.quote50, R.raw.quote51, R.raw.quote52, R.raw.quote53, R.raw.quote54,
+                             R.raw.quote55, R.raw.quote56, R.raw.quote57, R.raw.quote58, R.raw.quote59, R.raw.quote60,
+                             R.raw.quote61, R.raw.quote62, R.raw.quote63, R.raw.quote64, R.raw.quote65, R.raw.quote66,
+                             R.raw.quote67, R.raw.quote68, R.raw.quote69 };
 
     private String[] quoteText = {
             "Do you smoke weed?", //1
@@ -82,9 +92,34 @@ public class MainActivity extends AppCompatActivity {
             "Much love, much love.", //42
             "Oh... Oh... No... No...", //43
             "There's at least a 100% chance I'll lose my life if this continues.", //44
-            "Mom, come look at this. Come look at this." //45
+            "Mom, come look at this. Come look at this.", //45
+            "I'm just a misunderstood 14-year-old, just leave me alone guys.", //46
+            "Don't let negativity bring you down, it's not worth it. I hope you are OK.", //47
+            "No one gives one, mate.", //48
+            "Who is this person?", //49
+            "My child has sexual fantasies about anthropomorphic tails. Please just kill me.", //50
+            "So congratulations, you're not the bottom of the gene pool. You're just incredibly close to it.", //51
+            "What's that son? You've got crippling depression and you want to kill yourself? Just get some bubble liquid and you'll make everything better.", //52
+            "It's so bad!", //53
+            "But little did they know, Pyro was the killer.", //54
+            "I do speak the ruski, yes.", //55
+            "It's amazing how we haven't all killed ourselves yet.", //56
+            "It's about as depressing as it sounds honestly.", //57
+            "That is a pedo, that is a pedo, hiding in a bush, with his loudspeaker.", //58
+            "They seem way too overenthusiastic.", //59
+            "I'm pretty sure I'd be put on DramaAlert if I did that, just saying.", //60
+            "Yeah it looks like a blast you know, running around in circles.", //61
+            "I could be inside, gettin my double XP on Call of Duty.", //62
+            "I'm just a middle-aged man in a park, filming kids.", //63
+            "You need the kazoo. If you can't take part in this episode, you're a fucking faggot, you should just go kill yourself.", //64
+            "I love to stab people in GTA Online.", //65
+            "Ah, it's so good!", //66
+            "Lalala follow me into the woods. Lalala don't tell your parents where you are. Lalala show me your penis. Lalala...", //67
+            "You're gonna wish you never asked.", //68
+            "You can just feel the pure alpha-male, radiating from this man." //69
     };
-
+    public int r;
+    public ClipboardManager clipboardManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,14 +134,14 @@ public class MainActivity extends AppCompatActivity {
         button = (ImageView) findViewById(R.id.main_button);
         tv = (TextView) findViewById(R.id.text_quote);
         credit = (TextView) findViewById(R.id.credit);
-
+        clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         tv.setTypeface(tfc);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 credit.setVisibility(View.VISIBLE);
-                int r = getRandom();
+                r = getRandom();
                 if (firstPlay) {
                     mp = MediaPlayer.create(getApplicationContext(), rawRef[r]);
                     firstPlay = false;
@@ -120,21 +155,88 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    private int getRandom() {
+        return new Random().nextInt(69);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
+
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_rate:
+                rateApp();
+                break;
+            case R.id.action_share:
+                shareQuote();
+                break;
+            case R.id.action_replay:
+                replayQuote();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
-    private int getRandom() {
-        return new Random().nextInt(45);
+
+    private void replayQuote() {
+        if (!firstPlay && !mp.isPlaying()) {
+            mp = MediaPlayer.create(getApplicationContext(), rawRef[r]);
+            mp.start();
+        }
+    }
+
+    private void shareQuote() {
+        /*if (!firstPlay) {
+            ClipData clipData = ClipData.newPlainText("quote", quoteText[r] + "\n" + "- Pyrocynical");
+            clipboardManager.setPrimaryClip(clipData);
+            Toast.makeText(MainActivity.this, "Quote added to clipboard.", Toast.LENGTH_SHORT).show();
+        }*/
+        if (!firstPlay) {
+            Intent share = new Intent(Intent.ACTION_SEND);
+            share.putExtra(Intent.EXTRA_TEXT, quoteText[r] + "\n" + "- Pyrocynical");
+            share.setType("text/plain");
+            startActivity(Intent.createChooser(share, "Share to:"));
+        }
+    }
+
+    public void rateApp()
+    {
+        try
+        {
+            Intent rateIntent = rateIntentForUrl("market://details");
+            startActivity(rateIntent);
+        }
+        catch (ActivityNotFoundException e)
+        {
+            Intent rateIntent = rateIntentForUrl("http://play.google.com/store/apps/details");
+            startActivity(rateIntent);
+        }
+    }
+    private Intent rateIntentForUrl(String url)
+    {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.format("%s?id=%s", url, getPackageName())));
+        int flags = Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_MULTIPLE_TASK;
+        if (Build.VERSION.SDK_INT >= 21)
+        {
+            flags |= Intent.FLAG_ACTIVITY_NEW_DOCUMENT;
+        }
+        else
+        {
+            //noinspection deprecation
+            flags |= Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET;
+        }
+        intent.addFlags(flags);
+        return intent;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        System.exit(0);
     }
 }
